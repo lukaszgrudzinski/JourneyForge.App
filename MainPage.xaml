@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:journeyForge="clr-namespace:JourneyForge"
+             xmlns:shared="clr-namespace:Shared;assembly=Shared"
+             x:DataType="journeyForge:MainViewModel"
+             x:Class="JourneyForge.MainPage">
+
+    <Grid RowDefinitions="50, *">
+        <Label Text="Gothic 3 quests" FontSize="Header" />
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Quests}}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="shared:Gothic3QuestArea">
+                    <Grid ColumnDefinitions="*, Auto" Margin="5" >
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Name}"/>
+                                    <Span Text=" - Completed "/>
+                                    <Span Text="{Binding CompletedQuests}}"/>
+                                    <Span Text="/"/>
+                                    <Span Text="{Binding TotalQuests}}"/>
+
+                                    <Span Text=" Exp: "/>
+                                    <Span Text="{Binding CurrentExp}}"/>
+                                    <Span Text="/"/>
+                                    <Span Text="{Binding TotalExp}}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+
+                        <!--<Button Grid.Column="1" Text="See more" Command="{Binding GoToDetailsCommand, Source={x:RelativeSource AncestorType={x:Type journeyForge:MainViewModel}}}" CommandParameter="{Binding .}" />-->
+                        <Button Grid.Column="1" Text="See more" Clicked="Button_Clicked" />
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <Label Text="There are no quests"/>
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
