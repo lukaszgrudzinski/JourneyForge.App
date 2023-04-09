@@ -1,4 +1,5 @@
-﻿using JourneyForge.Services;
+﻿using CommunityToolkit.Maui;
+using JourneyForge.Services;
 using Microsoft.Extensions.Logging;
 
 namespace JourneyForge;
@@ -13,6 +14,7 @@ public static class MauiProgram
             .RegisterAppServices()
             .RegisterViewModels()
             .RegisterViews()
+            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

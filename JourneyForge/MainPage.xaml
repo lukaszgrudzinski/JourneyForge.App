@@ -13,6 +13,11 @@
                 <DataTemplate x:DataType="shared:Gothic3QuestArea">
                     <Grid ColumnDefinitions="*, Auto" Margin="5" >
                         <Label>
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCompleted}" Value="true">
+                                    <Setter Property="BackgroundColor" Value="LightGreen"/>
+                                </DataTrigger>
+                            </Label.Triggers>
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding Name}"/>

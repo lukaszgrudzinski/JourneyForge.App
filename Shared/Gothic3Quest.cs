@@ -9,5 +9,18 @@
         public int ReputationValue { get; set; }
         public Gothic3Reputation ReputationType { get; set; }
         public bool IsCompleted { get; set; }
+        public QuestStatus Status
+        {
+            get
+            {
+                if (IsCompleted)
+                    return QuestStatus.Done;
+
+                if (ReputationType == Gothic3Reputation.City)
+                    return QuestStatus.Critical;
+
+                return QuestStatus.NotCritical;
+            }
+        }
     }
 }
